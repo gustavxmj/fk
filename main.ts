@@ -1,6 +1,10 @@
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite.vy = -150
+})
+let mySprite: Sprite = null
 scene.setBackgroundColor(9)
 tiles.setCurrentTilemap(tilemap`level2`)
-let mySprite = sprites.create(img`
+mySprite = sprites.create(img`
     . . . . . . . f f f f f . . . . 
     . . . . . . f e e e e e f . . . 
     . . . . f f e e e d d d d f . . 
@@ -18,5 +22,6 @@ let mySprite = sprites.create(img`
     . f d d c f . . f d d d c d d f 
     . . f f f . . . f f f f f f f . 
     `, SpriteKind.Player)
-controller.moveSprite(mySprite)
+controller.moveSprite(mySprite, 100, 0)
 scene.cameraFollowSprite(mySprite)
+mySprite.ay = 200

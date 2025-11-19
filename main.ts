@@ -1,5 +1,16 @@
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
+    game.gameOver(true)
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite.vy = -150
+    if (mySprite.vy == 0) {
+        mySprite.vy = -150
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava0, function (sprite, location) {
+    game.gameOver(false)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
+    game.gameOver(false)
 })
 let mySprite: Sprite = null
 scene.setBackgroundColor(9)
@@ -24,4 +35,5 @@ mySprite = sprites.create(img`
     `, SpriteKind.Player)
 controller.moveSprite(mySprite, 100, 0)
 scene.cameraFollowSprite(mySprite)
+tiles.placeOnRandomTile(mySprite, assets.tile`myTile1`)
 mySprite.ay = 200
